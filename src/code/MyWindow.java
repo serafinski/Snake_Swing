@@ -2,7 +2,6 @@ package code;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class MyWindow extends JFrame {
     ImageIcon logo = new ImageIcon("src/zasoby/snake_logo.jpg");
@@ -15,9 +14,10 @@ public class MyWindow extends JFrame {
         this.setSize(1000,1000);
         this.setTitle("Tomasz Serafiński");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
 
         this.setIconImage(logo.getImage());
-        this.getContentPane().setBackground(Color.white);
+        this.getContentPane().setBackground(Color.BLACK);
 
 
 
@@ -34,8 +34,8 @@ public class MyWindow extends JFrame {
         panel_przyciski = new JPanel();
 
         //Layout
-        panel_przyciski.setLayout(new BoxLayout(panel_przyciski,BoxLayout.Y_AXIS));
         panel_tytul.setLayout(new FlowLayout());
+        panel_przyciski.setLayout(new BoxLayout(panel_przyciski,BoxLayout.Y_AXIS));
 
         //Kolor
         panel_tytul.setBackground(Color.BLACK);
@@ -60,7 +60,7 @@ public class MyWindow extends JFrame {
         przycisk_start.setText("Rozpocznij gre!");
         przycisk_start.setFocusable(false);
         przycisk_start.setFont(new Font("Jokerman",Font.BOLD,50));
-        przycisk_start.setForeground(Color.white);
+        przycisk_start.setForeground(Color.WHITE);
         przycisk_start.setBackground(Color.BLACK);
         przycisk_start.setAlignmentX(Component.CENTER_ALIGNMENT);
 

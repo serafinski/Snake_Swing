@@ -11,9 +11,10 @@ public class Game extends JFrame {
         this.setSize(1000,1000);
         this.setTitle("Snake!");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setResizable(false);
 
         this.setIconImage(logo.getImage());
-        this.getContentPane().setBackground(Color.white);
+        this.getContentPane().setBackground(Color.BLACK);
 
         //this.pack();
         this.setLocationRelativeTo(null);
