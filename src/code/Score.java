@@ -16,6 +16,7 @@ public class Score extends JFrame {
         this.getContentPane().setBackground(Color.white);
 
         //this.pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 }

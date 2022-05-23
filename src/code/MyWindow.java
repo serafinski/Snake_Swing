@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 
 public class MyWindow extends JFrame {
     ImageIcon logo = new ImageIcon("src/zasoby/snake_logo.jpg");
-
     JPanel panel_tytul;
 
     JPanel panel_przyciski;
@@ -15,7 +14,7 @@ public class MyWindow extends JFrame {
         this.setLayout(new BorderLayout());
         this.setSize(1000,1000);
         this.setTitle("Tomasz Serafiński");
-        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.setIconImage(logo.getImage());
         this.getContentPane().setBackground(Color.white);
@@ -24,7 +23,8 @@ public class MyWindow extends JFrame {
 
         initComponents();
 
-        this.pack();
+        //this.pack();
+        this.setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -47,25 +47,23 @@ public class MyWindow extends JFrame {
         tytul.setForeground(Color.WHITE);
         tytul.setHorizontalAlignment(JLabel.CENTER);
         tytul.setVerticalAlignment(JLabel.TOP);
-        tytul.setFont(new Font("Jokerman",Font.BOLD,100));
-
-
-
+        tytul.setFont(new Font("Jokerman",Font.BOLD,70));
 
         //Przycisk Start
-        JButton przycisk_start = new JButton(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new Game();
-            }
+        JButton przycisk_start = new JButton();
+
+        przycisk_start.addActionListener(e ->{
+            dispose();
+            new Game();
         });
+
         przycisk_start.setText("Rozpocznij gre!");
         przycisk_start.setFocusable(false);
-        przycisk_start.setFont(new Font("Jokerman",Font.BOLD,75));
+        przycisk_start.setFont(new Font("Jokerman",Font.BOLD,50));
         przycisk_start.setForeground(Color.white);
         przycisk_start.setBackground(Color.BLACK);
         przycisk_start.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         //na podstawie research'u - 1 z 3 metod zmieniania wielkości honorowana przez BoxLayout
         przycisk_start.setMaximumSize(new Dimension(1000,333));
 
@@ -74,16 +72,16 @@ public class MyWindow extends JFrame {
 
 
         //Przycisk wyników
-        JButton przycisk_wynik = new JButton(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new Score();
-            }
+        JButton przycisk_wynik = new JButton();
+
+        przycisk_wynik.addActionListener(e -> {
+            dispose();
+            new Score();
         });
+
         przycisk_wynik.setText("Wyswietl wyniki!");
         przycisk_wynik.setFocusable(false);
-        przycisk_wynik.setFont(new Font("Jokerman",Font.BOLD,75));
+        przycisk_wynik.setFont(new Font("Jokerman",Font.BOLD,50));
         przycisk_wynik.setForeground(Color.WHITE);
         przycisk_wynik.setBackground(Color.BLACK);
         przycisk_wynik.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -95,15 +93,15 @@ public class MyWindow extends JFrame {
 
 
         //przycisk Wyjdź z gry
-        JButton przycisk_wyjdz = new JButton(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
+        JButton przycisk_wyjdz = new JButton();
+
+        przycisk_wyjdz.addActionListener(e -> {
+            System.exit(0);
         });
+
         przycisk_wyjdz.setText("Wyjdz z gry!");
         przycisk_wyjdz.setFocusable(false);
-        przycisk_wyjdz.setFont(new Font("Jokerman",Font.BOLD,75));
+        przycisk_wyjdz.setFont(new Font("Jokerman",Font.BOLD,50));
         przycisk_wyjdz.setForeground(Color.white);
         przycisk_wyjdz.setBackground(Color.black);
         przycisk_wyjdz.setAlignmentX(Component.CENTER_ALIGNMENT);
