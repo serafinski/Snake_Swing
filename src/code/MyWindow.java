@@ -14,7 +14,7 @@ public class MyWindow extends JFrame {
     public MyWindow (){
         this.setLayout(new BorderLayout());
         this.setSize(1000,1000);
-        this.setTitle("Snake - Tomasz Serafiński");
+        this.setTitle("Tomasz Serafiński");
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
         this.setIconImage(logo.getImage());
@@ -43,7 +43,7 @@ public class MyWindow extends JFrame {
 
         //Tytuł
         JLabel tytul = new JLabel();
-        tytul.setText("Tomasz Serafinski");
+        tytul.setText("Snake - Tomasz Serafinski");
         tytul.setForeground(Color.WHITE);
         tytul.setHorizontalAlignment(JLabel.CENTER);
         tytul.setVerticalAlignment(JLabel.TOP);
