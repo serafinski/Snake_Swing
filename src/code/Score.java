@@ -12,7 +12,7 @@ public class Score extends JFrame {
 
     Score(){
         this.setLayout(new BorderLayout());
-        this.setSize(1000,1000);
+        this.setSize(750,750);
         this.setTitle("Wyniki");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -60,6 +60,7 @@ public class Score extends JFrame {
         przycisk_powrotu.setText("Wroc do menu glownego!");
         przycisk_powrotu.setFocusable(false);
         przycisk_powrotu.setFont(new Font("Jokerman",Font.BOLD,50));
+        przycisk_powrotu.setBorderPainted(false);
         przycisk_powrotu.setForeground(Color.WHITE);
         przycisk_powrotu.setBackground(Color.BLACK);
         przycisk_powrotu.setAlignmentX(Component.CENTER_ALIGNMENT);

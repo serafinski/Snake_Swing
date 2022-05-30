@@ -11,7 +11,7 @@ public class MyWindow extends JFrame {
 
     public MyWindow (){
         this.setLayout(new BorderLayout());
-        this.setSize(1000,1000);
+        this.setSize(750,750);
         this.setTitle("Tomasz Serafiński");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -43,11 +43,11 @@ public class MyWindow extends JFrame {
 
         //Tytuł
         JLabel tytul = new JLabel();
-        tytul.setText("Snake - Tomasz Serafinski");
+        tytul.setText("Snake!");
         tytul.setForeground(Color.WHITE);
         tytul.setHorizontalAlignment(JLabel.CENTER);
         tytul.setVerticalAlignment(JLabel.TOP);
-        tytul.setFont(new Font("Jokerman",Font.BOLD,70));
+        tytul.setFont(new Font("Jokerman",Font.BOLD,100));
 
         //Przycisk Start
         JButton przycisk_start = new JButton();
@@ -60,6 +60,7 @@ public class MyWindow extends JFrame {
         przycisk_start.setText("Rozpocznij gre!");
         przycisk_start.setFocusable(false);
         przycisk_start.setFont(new Font("Jokerman",Font.BOLD,50));
+        przycisk_start.setBorderPainted(false);
         przycisk_start.setForeground(Color.WHITE);
         przycisk_start.setBackground(Color.BLACK);
         przycisk_start.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -82,11 +83,11 @@ public class MyWindow extends JFrame {
         przycisk_wynik.setText("Wyswietl wyniki!");
         przycisk_wynik.setFocusable(false);
         przycisk_wynik.setFont(new Font("Jokerman",Font.BOLD,50));
+        przycisk_wynik.setBorderPainted(false);
         przycisk_wynik.setForeground(Color.WHITE);
         przycisk_wynik.setBackground(Color.BLACK);
         przycisk_wynik.setAlignmentX(Component.CENTER_ALIGNMENT);
         przycisk_wynik.setMaximumSize(new Dimension(1000,333));
-
 
 
 
@@ -102,6 +103,7 @@ public class MyWindow extends JFrame {
         przycisk_wyjdz.setText("Wyjdz z gry!");
         przycisk_wyjdz.setFocusable(false);
         przycisk_wyjdz.setFont(new Font("Jokerman",Font.BOLD,50));
+        przycisk_wyjdz.setBorderPainted(false);
         przycisk_wyjdz.setForeground(Color.white);
         przycisk_wyjdz.setBackground(Color.black);
         przycisk_wyjdz.setAlignmentX(Component.CENTER_ALIGNMENT);
