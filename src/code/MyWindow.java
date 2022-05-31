@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyWindow extends JFrame {
-    ImageIcon logo = new ImageIcon("src/zasoby/snake_logo.jpg");
+    static final ImageIcon logo = new ImageIcon("src/zasoby/snake_logo.jpg");
     JPanel panel_tytul;
 
     JPanel panel_przyciski;
 
     public MyWindow (){
         this.setLayout(new BorderLayout());
-        this.setSize(750,750);
+        this.setSize(750, 750);
         this.setTitle("Tomasz Serafiński");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -93,21 +93,22 @@ public class MyWindow extends JFrame {
 
 
 
-        //przycisk Wyjdź z gry
-        JButton przycisk_wyjdz = new JButton();
+        //przycisk Opcji
+        JButton przycisk_opcje = new JButton();
 
-        przycisk_wyjdz.addActionListener(e -> {
-            System.exit(0);
+        przycisk_opcje.addActionListener(e -> {
+            dispose();
+            new Options();
         });
 
-        przycisk_wyjdz.setText("Wyjdz z gry!");
-        przycisk_wyjdz.setFocusable(false);
-        przycisk_wyjdz.setFont(new Font("Jokerman",Font.BOLD,50));
-        przycisk_wyjdz.setBorderPainted(false);
-        przycisk_wyjdz.setForeground(Color.white);
-        przycisk_wyjdz.setBackground(Color.black);
-        przycisk_wyjdz.setAlignmentX(Component.CENTER_ALIGNMENT);
-        przycisk_wyjdz.setMaximumSize(new Dimension(1000,333));
+        przycisk_opcje.setText("Opcje!");
+        przycisk_opcje.setFocusable(false);
+        przycisk_opcje.setFont(new Font("Jokerman",Font.BOLD,50));
+        przycisk_opcje.setBorderPainted(false);
+        przycisk_opcje.setForeground(Color.white);
+        przycisk_opcje.setBackground(Color.black);
+        przycisk_opcje.setAlignmentX(Component.CENTER_ALIGNMENT);
+        przycisk_opcje.setMaximumSize(new Dimension(1000,333));
 
         //Dodawanie komponentów
         panel_tytul.add(tytul);
@@ -115,7 +116,7 @@ public class MyWindow extends JFrame {
         panel_przyciski.add(Box.createHorizontalGlue());
         panel_przyciski.add(przycisk_wynik);
         panel_przyciski.add(Box.createHorizontalGlue());
-        panel_przyciski.add(przycisk_wyjdz);
+        panel_przyciski.add(przycisk_opcje);
 
         this.add(panel_tytul, BorderLayout.NORTH);
         this.add(panel_przyciski,BorderLayout.CENTER);

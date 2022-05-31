@@ -4,20 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Score extends JFrame {
-    ImageIcon logo = new ImageIcon("src/zasoby/snake_logo.jpg");
 
     JPanel panel_tekst;
+
+    JPanel panel_wyniki;
 
     JPanel panel_przycisk_powrotu;
 
     Score(){
         this.setLayout(new BorderLayout());
-        this.setSize(750,750);
-        this.setTitle("Wyniki");
+        this.setSize(750, 750);
+        this.setTitle("Wyniki!");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
 
-        this.setIconImage(logo.getImage());
+        this.setIconImage(MyWindow.logo.getImage());
         this.getContentPane().setBackground(Color.BLACK);
 
 
@@ -31,15 +32,20 @@ public class Score extends JFrame {
     public void wyniki(){
         //Panel
         panel_tekst = new JPanel();
+        panel_wyniki = new JPanel();
         panel_przycisk_powrotu = new JPanel();
 
         //Layout
         panel_tekst.setLayout(new FlowLayout());
+        panel_wyniki.setLayout(new FlowLayout());
         panel_przycisk_powrotu.setLayout(new FlowLayout());
+
 
         //Kolor
         panel_tekst.setBackground(Color.BLACK);
+        panel_wyniki.setBackground(Color.BLACK);
         panel_przycisk_powrotu.setBackground(Color.BLACK);
+
 
         //Tekst
         JLabel tekst = new JLabel();
@@ -48,6 +54,9 @@ public class Score extends JFrame {
         tekst.setHorizontalAlignment(JLabel.CENTER);
         tekst.setVerticalAlignment(JLabel.TOP);
         tekst.setFont(new Font("Jokerman",Font.BOLD,70));
+
+        //TextArea
+        JTextArea textArea = new JTextArea(10,2);
 
         //Przycisk powrotu do menu
         JButton przycisk_powrotu = new JButton();
@@ -68,10 +77,12 @@ public class Score extends JFrame {
 
         //Dodawanie komponentów
         panel_tekst.add(tekst);
+        panel_wyniki.add(textArea);
         panel_przycisk_powrotu.add(przycisk_powrotu);
 
         //lokalizacja paneli w JFrame
         this.add(panel_tekst,BorderLayout.NORTH);
+        this.add(panel_wyniki, BorderLayout.CENTER);
         this.add(panel_przycisk_powrotu,BorderLayout.SOUTH);
     }
 }
