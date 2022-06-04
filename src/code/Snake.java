@@ -20,6 +20,12 @@ public class Snake extends JPanel implements ActionListener {
     Image czerwona_Glowa;
     Image czerwonyTuluw;
 
+    Image zielonaGlowa;
+    Image zielonyTuluw;
+
+    Image niebieskaGlowa;
+    Image niebieskiTuluw;
+
     //TEKSTURY SIATKA
     Image niebieska_Siatka;
     Image czerwona_Siatka;
@@ -70,6 +76,10 @@ public class Snake extends JPanel implements ActionListener {
 
     public static char kolor_Jablka;
 
+    public static char kolor_Glowy;
+
+    public static char kolor_Ciala;
+
     //Timer by ustawić prędkość
     Timer timer;
 
@@ -87,6 +97,12 @@ public class Snake extends JPanel implements ActionListener {
         //waz
         czerwona_Glowa = new ImageIcon("src/zasoby/red_glowa.jpg").getImage();
         czerwonyTuluw = new ImageIcon("src/zasoby/red_cialo.jpg").getImage();
+
+        niebieskaGlowa = new ImageIcon("src/zasoby/blue_glowa.jpg").getImage();
+        niebieskiTuluw = new ImageIcon("src/zasoby/blue_cialo.jpg").getImage();
+
+        zielonaGlowa = new ImageIcon("src/zasoby/green_glowa.jpg").getImage();
+        zielonyTuluw = new ImageIcon("src/zasoby/green_cialo.jpg").getImage();
 
         //siatki
         niebieska_Siatka = new ImageIcon("src/zasoby/blue_grid.jpg").getImage();
@@ -219,10 +235,21 @@ public class Snake extends JPanel implements ActionListener {
     public void waz (Graphics g){
         for (int i = 0; i<czesci_ciala; i++){
             if (i == 0){
-                g.drawImage(czerwona_Glowa,koordynaty_x[i],koordynaty_y[i], null);
+                switch (kolor_Glowy){
+                    default -> g.drawImage(czerwona_Glowa,koordynaty_x[i],koordynaty_y[i], null);
+                    case 'n' -> g.drawImage(niebieskaGlowa,koordynaty_x[i],koordynaty_y[i],null);
+                    case 'z' -> g.drawImage(zielonaGlowa,koordynaty_x[i],koordynaty_y[i],null);
+                    case 'c' -> g.drawImage(czerwona_Glowa,koordynaty_x[i],koordynaty_y[i], null);
+
+                }
             }
             else{
-                g.drawImage(czerwonyTuluw,koordynaty_x[i],koordynaty_y[i],null);
+                switch (kolor_Ciala){
+                    default -> g.drawImage(czerwonyTuluw,koordynaty_x[i],koordynaty_y[i],null);
+                    case 'n' -> g.drawImage(niebieskiTuluw,koordynaty_x[i],koordynaty_y[i],null);
+                    case 'z' -> g.drawImage(zielonyTuluw,koordynaty_x[i],koordynaty_y[i],null);
+                    case 'c' -> g.drawImage(czerwonyTuluw,koordynaty_x[i],koordynaty_y[i],null);
+                }
             }
         }
     }
@@ -303,6 +330,7 @@ public class Snake extends JPanel implements ActionListener {
 
     //to trzeba będzie zmienić
     public void koniecGry(){
+        this.setFocusable(false);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj swoje imie: ");
         String imie = scanner.nextLine();

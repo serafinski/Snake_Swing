@@ -51,6 +51,16 @@ public class Options extends JFrame {
     //Jablko
     ActionListener zmienKolorJablkaZielony = new Zielone();
     ActionListener zmienKolorJablkaCzerwony = new Czerwone();
+
+    //Glowa
+    ActionListener zmienKolorGlowyCzerwony = new CzerwonaG();
+    ActionListener zmienKolorGlowyZielonny = new ZielonaG();
+    ActionListener zmienKolorGlowyNiebieski = new NiebieskaG();
+
+    //Tuluw
+    ActionListener zmienKolorTulowiaCzerwony = new CzerwonyT();
+    ActionListener zmienKolorTulowiaZielony = new ZielonyT();
+    ActionListener zmienKolorTulowiaNiebieski = new NiebieskiT();
     JPanel panel_tytul;
 
     JPanel panel_opcje;
@@ -139,11 +149,13 @@ public class Options extends JFrame {
         kolor_glowy_weza_przycisk = new JButton(glowa_czerwony_waz);
         kolor_glowy_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_glowy_weza_przycisk.setMaximumSize(new Dimension(200,75));
+        kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyCzerwony);
 
         //WAZ CIALO PRZYCISK
-        kolor_ciala_weza_przycisk = new JButton(glowa_czerwony_waz);
+        kolor_ciala_weza_przycisk = new JButton(cialo_czerwony_waz);
         kolor_ciala_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_ciala_weza_przycisk.setMaximumSize(new Dimension(200,75));
+        kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaCzerwony);
 
         //JABLKO PRZYCISK
         kolor_jablka_przycisk = new JButton(zielone_jablko);
@@ -266,7 +278,66 @@ public class Options extends JFrame {
     }
 
     //GLOWA
+    private class CzerwonaG implements ActionListener{
 
-    
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyCzerwony);
+            Snake.kolor_Glowy = 'z';
+            kolor_glowy_weza_przycisk.setText(glowa_zielony_waz);
+            kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyZielonny);
+        }
+    }
+    private class ZielonaG implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyZielonny);
+            Snake.kolor_Glowy = 'n';
+            kolor_glowy_weza_przycisk.setText(glowa_niebieski_waz);
+            kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyNiebieski);
+        }
+    }
+    private class NiebieskaG implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyNiebieski);
+            Snake.kolor_Glowy = 'c';
+            kolor_glowy_weza_przycisk.setText(glowa_czerwony_waz);
+            kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyCzerwony);
+        }
+    }
+
     //CIALO
+    private class CzerwonyT implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaCzerwony);
+            Snake.kolor_Ciala = 'z';
+            kolor_ciala_weza_przycisk.setText(cialo_zielony_waz);
+            kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaZielony);
+        }
+    }
+    private class ZielonyT implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaZielony);
+            Snake.kolor_Ciala = 'n';
+            kolor_ciala_weza_przycisk.setText(cialo_niebieski_waz);
+            kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaNiebieski);
+        }
+    }
+    private class NiebieskiT implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaNiebieski);
+            Snake.kolor_Ciala = 'c';
+            kolor_ciala_weza_przycisk.setText(cialo_czerwony_waz);
+            kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaCzerwony);
+        }
+    }
 }
