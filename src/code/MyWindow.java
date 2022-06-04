@@ -77,7 +77,11 @@ public class MyWindow extends JFrame {
 
         przycisk_wynik.addActionListener(e -> {
             dispose();
-            new Score();
+            try {
+                new Score();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
         przycisk_wynik.setText("Wyswietl wyniki!");

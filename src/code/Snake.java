@@ -6,13 +6,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Snake extends JPanel implements ActionListener {
+    //TEKSTURY JABLKO
     Image zielone_Jablko;
-    Image czerwona_Glowa;
+    Image czerwone_Jablko;
 
+
+    //TEKSTURY WĄŻ
+    Image czerwona_Glowa;
     Image czerwonyTuluw;
+
+    //TEKSTURY SIATKA
+    Image niebieska_Siatka;
+    Image czerwona_Siatka;
+    Image zielona_Siatka;
+    Image biala_Siatka;
+
     public static final int SZEROKOSC_OKNA = 750;
     public static final int WYSOKOSC_OKNA = 750;
 
@@ -27,8 +40,13 @@ public class Snake extends JPanel implements ActionListener {
     //opóźnienie dla timer'a — manipulowanie predkoscia gry
     public static int OPOZNIENIE = 200;
 
-    //tablica zbierajaca polozenie koordynatów koordynaty_x ciala naszego węża (włącznie z głową)
+
     //wielkosc tablicy ustawiamy na jednostki gry, bo wąż nie będzie nigdy większy niż sama gra
+
+    //zrobić to na 1 tablicy zamiast 2!
+//    public static final int[][] koorydnaty_xy = new int[WSZYSTKIE_JEDNOSTKI_GRY][WSZYSTKIE_JEDNOSTKI_GRY];
+
+    //tablica zbierajaca polozenie koordynatów koordynaty_x ciala naszego węża (włącznie z głową)
     public static final int[] koordynaty_x = new int[WSZYSTKIE_JEDNOSTKI_GRY];
 
     //tablica zbierajaca polozenie koordynatów koordynaty_y ciala naszego węża
@@ -48,6 +66,10 @@ public class Snake extends JPanel implements ActionListener {
     //czy gra dziala
     public static boolean czy_dziala = false;
 
+    public static char kolor_Siatki;
+
+    public static char kolor_Jablka;
+
     //Timer by ustawić prędkość
     Timer timer;
 
@@ -57,9 +79,20 @@ public class Snake extends JPanel implements ActionListener {
     Snake(){
 
         //import tekstur
-        zielone_Jablko = new ImageIcon("src/zasoby/jablko.png").getImage();
-        czerwona_Glowa = new ImageIcon("src/zasoby/red_head.jpg").getImage();
-        czerwonyTuluw = new ImageIcon("src/zasoby/red_square.jpg").getImage();
+
+        //jablka
+        zielone_Jablko = new ImageIcon("src/zasoby/green_jablko.png").getImage();
+        czerwone_Jablko = new ImageIcon("src/zasoby/red_jablko.png").getImage();
+
+        //waz
+        czerwona_Glowa = new ImageIcon("src/zasoby/red_glowa.jpg").getImage();
+        czerwonyTuluw = new ImageIcon("src/zasoby/red_cialo.jpg").getImage();
+
+        //siatki
+        niebieska_Siatka = new ImageIcon("src/zasoby/blue_grid.jpg").getImage();
+        czerwona_Siatka = new ImageIcon("src/zasoby/red_grid.jpg").getImage();
+        zielona_Siatka = new ImageIcon("src/zasoby/green_grid.jpg").getImage();
+        biala_Siatka = new ImageIcon("src/zasoby/white_grid.jpg").getImage();
 
         //losowe pozycje dla jabłka
         random = new Random();
@@ -111,6 +144,8 @@ public class Snake extends JPanel implements ActionListener {
                             kierunek = 'D';
                         }
                         break;
+                    case KeyEvent.VK_ESCAPE:
+                        System.exit(0);
                 }
             }
 
@@ -137,28 +172,41 @@ public class Snake extends JPanel implements ActionListener {
         super.paint(g);
 
         if(czy_dziala){
-            siatka(g);
+
+            switch(kolor_Siatki) {
+                default:
+                    g.drawImage(niebieska_Siatka, 0, 0, null);
+                    break;
+                case 'c':
+                    g.drawImage(czerwona_Siatka,0,0,null);
+                    break;
+                case 'z':
+                    g.drawImage(zielona_Siatka,0,0,null);
+                    break;
+                case 'b':
+                    g.drawImage(biala_Siatka,0,0,null);
+                    break;
+                case '0':
+                    break;
+                case 'n':
+                    g.drawImage(niebieska_Siatka, 0, 0, null);
+                    break;
+            }
             narysujJablko(g);
             waz(g);
-            wynik(g);
         }
         else {
-            koniecGry(g);
-        }
-    }
-
-    //rysowanie siatki
-    public void siatka(Graphics g) {
-        for (int i = 0; i < WYSOKOSC_OKNA / JEDNOSTKA; i++) {
-            g.drawLine(i * JEDNOSTKA, 0, i * JEDNOSTKA, WYSOKOSC_OKNA);
-            g.drawLine(0, i * JEDNOSTKA, SZEROKOSC_OKNA, i * JEDNOSTKA);
-            g.setColor(Color.BLUE);
+            koniecGry();
         }
     }
 
     //rysowanie Jablka
     public void narysujJablko(Graphics g) {
-        g.drawImage(zielone_Jablko,polozenieXjablka,polozenieYjablka,null);
+        switch (kolor_Jablka){
+            default -> g.drawImage(zielone_Jablko,polozenieXjablka,polozenieYjablka,null);
+            case 'c' -> g.drawImage(czerwone_Jablko,polozenieXjablka,polozenieYjablka,null);
+            case 'g' -> g.drawImage(zielone_Jablko,polozenieXjablka,polozenieYjablka,null);
+        }
     }
 
     //losowanie pozycji dla jablka
@@ -171,22 +219,13 @@ public class Snake extends JPanel implements ActionListener {
     public void waz (Graphics g){
         for (int i = 0; i<czesci_ciala; i++){
             if (i == 0){
-                g.drawImage(czerwona_Glowa,koordynaty_x[i],koordynaty_y[i],null);
+                g.drawImage(czerwona_Glowa,koordynaty_x[i],koordynaty_y[i], null);
             }
             else{
                 g.drawImage(czerwonyTuluw,koordynaty_x[i],koordynaty_y[i],null);
             }
         }
     }
-
-    //też do zmiany
-    public void wynik (Graphics g){
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Jokerman",Font.PLAIN,30));
-        FontMetrics metrics = getFontMetrics(g.getFont());
-        g.drawString("Wynik: "+ punkty,(SZEROKOSC_OKNA - metrics.stringWidth("Wynik: " + punkty))/2,g.getFont().getSize());
-    }
-
 
     public void ruch(){
         //loop iterujący po ciele snake'a
@@ -231,9 +270,10 @@ public class Snake extends JPanel implements ActionListener {
         //czy głowa weszła w kolizje z ciałem
         for (int i = czesci_ciala;i>0;i--){
             //jeżeli głowa jest równa pozycją z indeksu i
-            if((koordynaty_x[0] == koordynaty_x[i]) && (koordynaty_y[0] == koordynaty_y[i])){
+            if ((koordynaty_x[0] == koordynaty_x[i]) && (koordynaty_y[0] == koordynaty_y[i])) {
                 //koniec gry
                 czy_dziala = false;
+                break;
             }
         }
 
@@ -245,7 +285,7 @@ public class Snake extends JPanel implements ActionListener {
             timer.stop();
         }
         //PRAWY BOK
-        if((koordynaty_x[0]>= SZEROKOSC_OKNA-JEDNOSTKA)){
+        if((koordynaty_x[0]> SZEROKOSC_OKNA-JEDNOSTKA)){
             czy_dziala =false;
             timer.stop();
         }
@@ -255,15 +295,28 @@ public class Snake extends JPanel implements ActionListener {
             timer.stop();
         }
         //DOLNY BOK
-        if ((koordynaty_y[0]>= WYSOKOSC_OKNA-JEDNOSTKA)){
+        if ((koordynaty_y[0]> WYSOKOSC_OKNA-JEDNOSTKA)){
             czy_dziala = false;
             timer.stop();
         }
     }
 
     //to trzeba będzie zmienić
-    public void koniecGry(Graphics g){
-        JLabel text = new JLabel();
+    public void koniecGry(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj swoje imie: ");
+        String imie = scanner.nextLine();
+
+        try {
+            Zapis.zapis(imie,punkty);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Twoj wynik to: " + punkty + " pkt!");
+
+        System.exit(0);
+
     }
 
     @Override

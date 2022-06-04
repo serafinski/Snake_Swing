@@ -2,6 +2,8 @@ package code;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.FileReader;
 
 public class Score extends JFrame {
 
@@ -11,7 +13,7 @@ public class Score extends JFrame {
 
     JPanel panel_przycisk_powrotu;
 
-    Score(){
+    Score() throws Exception {
         this.setLayout(new BorderLayout());
         this.setSize(750, 750);
         this.setTitle("Wyniki!");
@@ -29,7 +31,7 @@ public class Score extends JFrame {
         setVisible(true);
     }
 
-    public void wyniki(){
+    public void wyniki() throws Exception {
         //Panel
         panel_tekst = new JPanel();
         panel_wyniki = new JPanel();
@@ -56,7 +58,17 @@ public class Score extends JFrame {
         tekst.setFont(new Font("Jokerman",Font.BOLD,70));
 
         //TextArea
-        JTextArea textArea = new JTextArea(10,2);
+        JTextArea textArea = new JTextArea(10,50);
+
+        String data = Reader.plikJakoTekst("topscore.txt");
+        textArea.setText(data);
+
+        textArea.setBackground(Color.BLACK);
+        textArea.setForeground(Color.WHITE);
+        textArea.setFont(new Font("Jokerman",Font.PLAIN,20));
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new Dimension(700,350));
 
         //Przycisk powrotu do menu
         JButton przycisk_powrotu = new JButton();
@@ -77,7 +89,7 @@ public class Score extends JFrame {
 
         //Dodawanie komponentów
         panel_tekst.add(tekst);
-        panel_wyniki.add(textArea);
+        panel_wyniki.add(scrollPane);
         panel_przycisk_powrotu.add(przycisk_powrotu);
 
         //lokalizacja paneli w JFrame

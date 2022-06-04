@@ -7,14 +7,6 @@ import java.awt.event.ActionListener;
 
 public class Options extends JFrame {
 
-    //Predkosci odswierzania
-    String p_100 = "100%";
-    String p_110 = "110%";
-    String p_125 = "125%";
-    String p_150 = "150%";
-    String p_50 = "50%";
-    String p_75 = "75%";
-
     //Kolory siatki
     String niebieska_siatka = "Niebieska";
     String czerwona_siatka = "Czerwona";
@@ -22,22 +14,43 @@ public class Options extends JFrame {
     String biala_siatka = "Biala";
     String brak_siatki = "Brak siatki";
 
-    //Kolory węża
-    String czerwony_waz = "Czerwony";
-    String niebieski_waz = "Niebieski";
-    String zielony_waz = "Zielony";
+    //Kolory glowy węża
+    String glowa_czerwony_waz = "Czerwona";
+    String glowa_niebieski_waz = "Niebieska";
+    String glowa_zielony_waz = "Zielona";
+
+    //Kolory ciala węża
+    String cialo_czerwony_waz = "Czerwone";
+    String cialo_niebieski_waz = "Niebieskie";
+    String cialo_zielony_waz = "Zielone";
 
     //Kolor jablka
     String zielone_jablko = "Zielone";
     String czerwone_jablko = "Czerwone";
 
+    JButton kolor_siatki_przycisk;
 
-    JButton kolor_weza_przycisk;
-    JButton predkosc_przycisk;
+    JButton kolor_glowy_weza_przycisk;
 
-    //ActionListener zmienKolorWeza1 = new kolor_weza1();
-    //ActionListener zmienKolorWeza2 = new kolor_weza2();
+    JButton kolor_ciala_weza_przycisk;
 
+    JButton kolor_jablka_przycisk;
+
+
+    //LISTENERY
+
+    //Siatka
+    ActionListener zmienKolorSiatkiNiebieski = new Niebieska();
+    ActionListener zmienKolorSiatkiCzerwony = new Czerwona();
+
+    ActionListener zmienKolorSiatkiZielony = new Zielona();
+
+    ActionListener zmienKolorSiatkiBialy = new Biala();
+    ActionListener zmienKolorSiatkiBrak = new Brak();
+
+    //Jablko
+    ActionListener zmienKolorJablkaZielony = new Zielone();
+    ActionListener zmienKolorJablkaCzerwony = new Czerwone();
     JPanel panel_tytul;
 
     JPanel panel_opcje;
@@ -85,14 +98,6 @@ public class Options extends JFrame {
 
         //Tytuly opcji
 
-        //PREDKOSC TEXT
-        JLabel predkosc_tytul = new JLabel();
-        predkosc_tytul.setText("Wybierz predkosc");
-        predkosc_tytul.setForeground(Color.WHITE);
-        predkosc_tytul.setAlignmentX(Component.CENTER_ALIGNMENT);
-        predkosc_tytul.setFont(new Font("Jokerman",Font.BOLD,35));
-
-
         //SIATKA TEKST
         JLabel kolor_siatki_tytul = new JLabel();
         kolor_siatki_tytul.setText("Wybierz kolor siatki");
@@ -100,12 +105,19 @@ public class Options extends JFrame {
         kolor_siatki_tytul.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_siatki_tytul.setFont(new Font("Jokerman",Font.BOLD,35));
 
-        //WAZ TEKST
-        JLabel kolor_weza_tytul = new JLabel();
-        kolor_weza_tytul.setText("Wybierz kolor weza");
-        kolor_weza_tytul.setForeground(Color.WHITE);
-        kolor_weza_tytul.setAlignmentX(Component.CENTER_ALIGNMENT);
-        kolor_weza_tytul.setFont(new Font("Jokerman",Font.BOLD,35));
+        //WAZ GLOWA TEKST
+        JLabel kolor_glowy_weza_tytul = new JLabel();
+        kolor_glowy_weza_tytul.setText("Wybierz kolor glowy weza");
+        kolor_glowy_weza_tytul.setForeground(Color.WHITE);
+        kolor_glowy_weza_tytul.setAlignmentX(Component.CENTER_ALIGNMENT);
+        kolor_glowy_weza_tytul.setFont(new Font("Jokerman",Font.BOLD,35));
+
+        //WAZ GLOWA TEKST
+        JLabel kolor_ciala_weza_tytul = new JLabel();
+        kolor_ciala_weza_tytul.setText("Wybierz kolor ciala weza");
+        kolor_ciala_weza_tytul.setForeground(Color.WHITE);
+        kolor_ciala_weza_tytul.setAlignmentX(Component.CENTER_ALIGNMENT);
+        kolor_ciala_weza_tytul.setFont(new Font("Jokerman",Font.BOLD,35));
 
         //JABLKO TEKST
         JLabel kolor_jablka_tytul = new JLabel();
@@ -116,29 +128,28 @@ public class Options extends JFrame {
 
         //Przyciski opcji
 
-
-
-        //PREDKOSC PRZYCISK
-        JButton predkosc_przycisk = new JButton(p_100);
-        predkosc_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
-        predkosc_przycisk.setMaximumSize(new Dimension(200,75));
-
-
         //SIATKA PRZYCISK
-        JButton kolor_siatki_przycisk = new JButton(niebieska_siatka);
+        kolor_siatki_przycisk = new JButton(niebieska_siatka);
+        kolor_siatki_przycisk.setForeground(Color.BLUE);
         kolor_siatki_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_siatki_przycisk.setMaximumSize(new Dimension(200,75));
+        kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiNiebieski);
 
-        //WAZ PRZYCISK
-        JButton kolor_weza_przycisk = new JButton(czerwony_waz);
-        kolor_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
-        kolor_weza_przycisk.setMaximumSize(new Dimension(200,75));
-        //kolor_weza_przycisk.addActionListener(zmienKolorWeza1);
+        //WAZ GLOWA PRZYCISK
+        kolor_glowy_weza_przycisk = new JButton(glowa_czerwony_waz);
+        kolor_glowy_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
+        kolor_glowy_weza_przycisk.setMaximumSize(new Dimension(200,75));
+
+        //WAZ CIALO PRZYCISK
+        kolor_ciala_weza_przycisk = new JButton(glowa_czerwony_waz);
+        kolor_ciala_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
+        kolor_ciala_weza_przycisk.setMaximumSize(new Dimension(200,75));
 
         //JABLKO PRZYCISK
-        JButton kolor_jablka_przycisk = new JButton(zielone_jablko);
+        kolor_jablka_przycisk = new JButton(zielone_jablko);
         kolor_jablka_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_jablka_przycisk.setMaximumSize(new Dimension(200,75));
+        kolor_jablka_przycisk.addActionListener(zmienKolorJablkaZielony);
 
 
         //Przycisk powrotu do menu
@@ -161,14 +172,14 @@ public class Options extends JFrame {
         //Dodawanie komponentów
         panel_tytul.add(tytul);
 
-        panel_opcje.add(predkosc_tytul);
-        panel_opcje.add(predkosc_przycisk);
-
         panel_opcje.add(kolor_siatki_tytul);
         panel_opcje.add(kolor_siatki_przycisk);
 
-        panel_opcje.add(kolor_weza_tytul);
-        panel_opcje.add(kolor_weza_przycisk);
+        panel_opcje.add(kolor_glowy_weza_tytul);
+        panel_opcje.add(kolor_glowy_weza_przycisk);
+
+        panel_opcje.add(kolor_ciala_weza_tytul);
+        panel_opcje.add(kolor_ciala_weza_przycisk);
 
         panel_opcje.add(kolor_jablka_tytul);
         panel_opcje.add(kolor_jablka_przycisk);
@@ -181,28 +192,81 @@ public class Options extends JFrame {
         this.add(panel_przycisk_powrotu,BorderLayout.SOUTH);
     }
 
-
-    /*private class kolor_weza1 implements ActionListener{
+    //SIATKI
+    private class Niebieska implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiNiebieski);
+            Snake.kolor_Siatki = 'c';
+            kolor_siatki_przycisk.setText(czerwona_siatka);
+            kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiCzerwony);
+        }
+    }
+    private class Czerwona implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiCzerwony);
+            Snake.kolor_Siatki = 'z';
+            kolor_siatki_przycisk.setText(zielona_siatka);
+            kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiZielony);
+        }
+    }
+    private class Zielona implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Game.kolor = new Color(255,0,0);
-            kolor_weza_przycisk.removeActionListener(zmienKolorWeza1);
-            kolor_weza_przycisk.setText(niebieski_waz);
-            kolor_weza_przycisk.addActionListener(zmienKolorWeza2);
+            kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiZielony);
+            Snake.kolor_Siatki = 'b';
+            kolor_siatki_przycisk.setText(biala_siatka);
+            kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiBialy);
         }
     }
-
-    private class kolor_weza2 implements ActionListener{
+    private class Biala implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Game.kolor = new Color(0,0,255);
-            kolor_weza_przycisk.removeActionListener(zmienKolorWeza2);
-            kolor_weza_przycisk.setText(czerwony_waz);
-            kolor_weza_przycisk.addActionListener(zmienKolorWeza1);
+            kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiBialy);
+            Snake.kolor_Siatki = '0';
+            kolor_siatki_przycisk.setText(brak_siatki);
+            kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiBrak);
         }
     }
 
-     */
+    private class Brak implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiBrak);
+            Snake.kolor_Siatki = 'n';
+            kolor_siatki_przycisk.setText(niebieska_siatka);
+            kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiNiebieski);
+        }
+    }
+
+    //JABŁKA
+    private class Zielone implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_jablka_przycisk.removeActionListener(zmienKolorJablkaZielony);
+            Snake.kolor_Jablka = 'c';
+            kolor_jablka_przycisk.setText(czerwone_jablko);
+            kolor_jablka_przycisk.addActionListener(zmienKolorJablkaCzerwony);
+        }
+    }
+    private class Czerwone implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            kolor_siatki_przycisk.removeActionListener(zmienKolorJablkaCzerwony);
+            Snake.kolor_Jablka = 'z';
+            kolor_jablka_przycisk.setText(zielone_jablko);
+            kolor_jablka_przycisk.addActionListener(zmienKolorJablkaZielony);
+        }
+    }
+
+    //GLOWA
+
+    
+    //CIALO
 }
