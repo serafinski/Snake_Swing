@@ -2,8 +2,6 @@ package code;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
 
 public class Score extends JFrame {
 
@@ -51,7 +49,7 @@ public class Score extends JFrame {
 
         //Tekst
         JLabel tekst = new JLabel();
-        tekst.setText("Tablica wynikow:");
+        tekst.setText("Ostatnie wyniki:");
         tekst.setForeground(Color.WHITE);
         tekst.setHorizontalAlignment(JLabel.CENTER);
         tekst.setVerticalAlignment(JLabel.TOP);
@@ -69,6 +67,22 @@ public class Score extends JFrame {
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(700,350));
+
+        //Najlepszy wynik
+        JLabel bestScoreTitle = new JLabel();
+        bestScoreTitle.setText("Najlepszy wynik:");
+        bestScoreTitle.setForeground(Color.WHITE);
+        bestScoreTitle.setHorizontalAlignment(JLabel.CENTER);
+        bestScoreTitle.setVerticalAlignment(JLabel.TOP);
+        bestScoreTitle.setFont(new Font("Jokerman",Font.BOLD,50));
+
+        JLabel bestScore = new JLabel();
+        TopScore.top();
+        bestScore.setText(TopScore.topName + ": " + String.valueOf(TopScore.topVaule));
+        bestScore.setForeground(Color.WHITE);
+        bestScore.setHorizontalAlignment(JLabel.CENTER);
+        bestScore.setVerticalAlignment(JLabel.TOP);
+        bestScore.setFont(new Font("Jokerman",Font.BOLD,35));
 
         //Przycisk powrotu do menu
         JButton przycisk_powrotu = new JButton();
@@ -90,6 +104,8 @@ public class Score extends JFrame {
         //Dodawanie komponentów
         panel_tekst.add(tekst);
         panel_wyniki.add(scrollPane);
+        panel_wyniki.add(bestScoreTitle);
+        panel_wyniki.add(bestScore);
         panel_przycisk_powrotu.add(przycisk_powrotu);
 
         //lokalizacja paneli w JFrame

@@ -140,6 +140,7 @@ public class Options extends JFrame {
         //SIATKA PRZYCISK
         kolor_siatki_przycisk = new JButton(niebieska_siatka);
         kolor_siatki_przycisk.setForeground(Color.BLUE);
+        kolor_siatki_przycisk.setFocusable(false);
         kolor_siatki_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_siatki_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiNiebieski);
@@ -147,6 +148,7 @@ public class Options extends JFrame {
         //WAZ GLOWA PRZYCISK
         kolor_glowy_weza_przycisk = new JButton(glowa_czerwony_waz);
         kolor_glowy_weza_przycisk.setForeground(Color.RED);
+        kolor_glowy_weza_przycisk.setFocusable(false);
         kolor_glowy_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_glowy_weza_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyCzerwony);
@@ -154,6 +156,7 @@ public class Options extends JFrame {
         //WAZ CIALO PRZYCISK
         kolor_ciala_weza_przycisk = new JButton(cialo_czerwony_waz);
         kolor_ciala_weza_przycisk.setForeground(Color.RED);
+        kolor_ciala_weza_przycisk.setFocusable(false);
         kolor_ciala_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_ciala_weza_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaCzerwony);
@@ -161,6 +164,7 @@ public class Options extends JFrame {
         //JABLKO PRZYCISK
         kolor_jablka_przycisk = new JButton(zielone_jablko);
         kolor_jablka_przycisk.setForeground(Color.GREEN);
+        kolor_jablka_przycisk.setFocusable(false);
         kolor_jablka_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_jablka_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_jablka_przycisk.addActionListener(zmienKolorJablkaZielony);

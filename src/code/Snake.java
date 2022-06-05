@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -212,7 +213,11 @@ public class Snake extends JPanel implements ActionListener {
             waz(g);
         }
         else {
-            koniecGry();
+            try {
+                koniecGry();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -329,7 +334,7 @@ public class Snake extends JPanel implements ActionListener {
     }
 
     //to trzeba będzie zmienić
-    public void koniecGry(){
+    public void koniecGry() throws FileNotFoundException {
         this.setFocusable(false);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj swoje imie: ");
@@ -337,12 +342,13 @@ public class Snake extends JPanel implements ActionListener {
 
         try {
             Zapis.zapis(imie,punkty);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         System.out.println("Twoj wynik to: " + punkty + " pkt!");
-
+        TopScore.top();
+        System.out.println(TopScore.topVaule+" "+TopScore.topIndex);
         System.exit(0);
 
     }
