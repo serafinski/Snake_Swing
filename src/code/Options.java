@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Options extends JFrame {
-
     //Kolory siatki
     String niebieska_siatka = "Niebieska";
     String czerwona_siatka = "Czerwona";
@@ -147,18 +146,21 @@ public class Options extends JFrame {
 
         //WAZ GLOWA PRZYCISK
         kolor_glowy_weza_przycisk = new JButton(glowa_czerwony_waz);
+        kolor_glowy_weza_przycisk.setForeground(Color.RED);
         kolor_glowy_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_glowy_weza_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyCzerwony);
 
         //WAZ CIALO PRZYCISK
         kolor_ciala_weza_przycisk = new JButton(cialo_czerwony_waz);
+        kolor_ciala_weza_przycisk.setForeground(Color.RED);
         kolor_ciala_weza_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_ciala_weza_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaCzerwony);
 
         //JABLKO PRZYCISK
         kolor_jablka_przycisk = new JButton(zielone_jablko);
+        kolor_jablka_przycisk.setForeground(Color.GREEN);
         kolor_jablka_przycisk.setAlignmentX(Component.CENTER_ALIGNMENT);
         kolor_jablka_przycisk.setMaximumSize(new Dimension(200,75));
         kolor_jablka_przycisk.addActionListener(zmienKolorJablkaZielony);
@@ -210,6 +212,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiNiebieski);
             Snake.kolor_Siatki = 'c';
+            kolor_siatki_przycisk.setForeground(Color.RED);
             kolor_siatki_przycisk.setText(czerwona_siatka);
             kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiCzerwony);
         }
@@ -219,6 +222,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiCzerwony);
             Snake.kolor_Siatki = 'z';
+            kolor_siatki_przycisk.setForeground(Color.GREEN);
             kolor_siatki_przycisk.setText(zielona_siatka);
             kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiZielony);
         }
@@ -229,6 +233,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiZielony);
             Snake.kolor_Siatki = 'b';
+            kolor_siatki_przycisk.setForeground(Color.GRAY);
             kolor_siatki_przycisk.setText(biala_siatka);
             kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiBialy);
         }
@@ -239,6 +244,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiBialy);
             Snake.kolor_Siatki = '0';
+            kolor_siatki_przycisk.setForeground(Color.BLACK);
             kolor_siatki_przycisk.setText(brak_siatki);
             kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiBrak);
         }
@@ -250,6 +256,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorSiatkiBrak);
             Snake.kolor_Siatki = 'n';
+            kolor_siatki_przycisk.setForeground(Color.BLUE);
             kolor_siatki_przycisk.setText(niebieska_siatka);
             kolor_siatki_przycisk.addActionListener(zmienKolorSiatkiNiebieski);
         }
@@ -262,6 +269,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_jablka_przycisk.removeActionListener(zmienKolorJablkaZielony);
             Snake.kolor_Jablka = 'c';
+            kolor_jablka_przycisk.setForeground(Color.RED);
             kolor_jablka_przycisk.setText(czerwone_jablko);
             kolor_jablka_przycisk.addActionListener(zmienKolorJablkaCzerwony);
         }
@@ -272,6 +280,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_siatki_przycisk.removeActionListener(zmienKolorJablkaCzerwony);
             Snake.kolor_Jablka = 'z';
+            kolor_jablka_przycisk.setForeground(Color.GREEN);
             kolor_jablka_przycisk.setText(zielone_jablko);
             kolor_jablka_przycisk.addActionListener(zmienKolorJablkaZielony);
         }
@@ -284,6 +293,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyCzerwony);
             Snake.kolor_Glowy = 'z';
+            kolor_glowy_weza_przycisk.setForeground(Color.GREEN);
             kolor_glowy_weza_przycisk.setText(glowa_zielony_waz);
             kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyZielonny);
         }
@@ -294,6 +304,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyZielonny);
             Snake.kolor_Glowy = 'n';
+            kolor_glowy_weza_przycisk.setForeground(Color.BLUE);
             kolor_glowy_weza_przycisk.setText(glowa_niebieski_waz);
             kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyNiebieski);
         }
@@ -304,6 +315,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_glowy_weza_przycisk.removeActionListener(zmienKolorGlowyNiebieski);
             Snake.kolor_Glowy = 'c';
+            kolor_glowy_weza_przycisk.setForeground(Color.RED);
             kolor_glowy_weza_przycisk.setText(glowa_czerwony_waz);
             kolor_glowy_weza_przycisk.addActionListener(zmienKolorGlowyCzerwony);
         }
@@ -316,6 +328,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaCzerwony);
             Snake.kolor_Ciala = 'z';
+            kolor_ciala_weza_przycisk.setForeground(Color.GREEN);
             kolor_ciala_weza_przycisk.setText(cialo_zielony_waz);
             kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaZielony);
         }
@@ -326,6 +339,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaZielony);
             Snake.kolor_Ciala = 'n';
+            kolor_ciala_weza_przycisk.setForeground(Color.BLUE);
             kolor_ciala_weza_przycisk.setText(cialo_niebieski_waz);
             kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaNiebieski);
         }
@@ -336,6 +350,7 @@ public class Options extends JFrame {
         public void actionPerformed(ActionEvent e) {
             kolor_ciala_weza_przycisk.removeActionListener(zmienKolorTulowiaNiebieski);
             Snake.kolor_Ciala = 'c';
+            kolor_ciala_weza_przycisk.setForeground(Color.RED);
             kolor_ciala_weza_przycisk.setText(cialo_czerwony_waz);
             kolor_ciala_weza_przycisk.addActionListener(zmienKolorTulowiaCzerwony);
         }
