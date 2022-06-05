@@ -348,7 +348,6 @@ public class Snake extends JPanel implements ActionListener {
 
         System.out.println("Twoj wynik to: " + punkty + " pkt!");
         TopScore.top();
-        System.out.println(TopScore.topVaule+" "+TopScore.topIndex);
         System.exit(0);
 
     }

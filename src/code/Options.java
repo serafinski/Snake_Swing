@@ -282,7 +282,7 @@ public class Options extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            kolor_siatki_przycisk.removeActionListener(zmienKolorJablkaCzerwony);
+            kolor_jablka_przycisk.removeActionListener(zmienKolorJablkaCzerwony);
             Snake.kolor_Jablka = 'z';
             kolor_jablka_przycisk.setForeground(Color.GREEN);
             kolor_jablka_przycisk.setText(zielone_jablko);
