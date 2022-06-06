@@ -11,7 +11,7 @@ public class MyWindow extends JFrame {
 
     public MyWindow (){
         this.setLayout(new BorderLayout());
-        this.setSize(750, 750);
+        this.setSize(Snake.SZEROKOSC_OKNA, Snake.WYSOKOSC_OKNA);
         this.setTitle("Tomasz Serafiński");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -22,26 +22,24 @@ public class MyWindow extends JFrame {
 
 
         initComponents();
-
-        //this.pack();
         this.setLocationRelativeTo(null);
         setVisible(true);
     }
 
     public void initComponents(){
-        //Panel
+        //Panele
         panel_tytul = new JPanel();
         panel_przyciski = new JPanel();
 
-        //Layout
+        //Layouty Paneli
         panel_tytul.setLayout(new FlowLayout());
         panel_przyciski.setLayout(new BoxLayout(panel_przyciski,BoxLayout.Y_AXIS));
 
-        //Kolor
+        //Kolor Paneli
         panel_tytul.setBackground(Color.BLACK);
         panel_przyciski.setBackground(Color.BLACK);
 
-        //Tytuł
+        //Główny Tytuł
         JLabel tytul = new JLabel();
         tytul.setText("Snake!");
         tytul.setForeground(Color.WHITE);
@@ -60,6 +58,7 @@ public class MyWindow extends JFrame {
         przycisk_start.setText("Rozpocznij gre!");
         przycisk_start.setFocusable(false);
         przycisk_start.setFont(new Font("Jokerman",Font.BOLD,50));
+        //pozwala na przeźroczyste przyciski
         przycisk_start.setBorderPainted(false);
         przycisk_start.setForeground(Color.WHITE);
         przycisk_start.setBackground(Color.BLACK);
@@ -87,10 +86,12 @@ public class MyWindow extends JFrame {
         przycisk_wynik.setText("Wyswietl wyniki!");
         przycisk_wynik.setFocusable(false);
         przycisk_wynik.setFont(new Font("Jokerman",Font.BOLD,50));
+        //pozwala na przeźroczyste przyciski
         przycisk_wynik.setBorderPainted(false);
         przycisk_wynik.setForeground(Color.WHITE);
         przycisk_wynik.setBackground(Color.BLACK);
         przycisk_wynik.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //na podstawie research'u - 1 z 3 metod zmieniania wielkości honorowana przez BoxLayout
         przycisk_wynik.setMaximumSize(new Dimension(1000,333));
 
 
@@ -108,10 +109,12 @@ public class MyWindow extends JFrame {
         przycisk_opcje.setText("Opcje!");
         przycisk_opcje.setFocusable(false);
         przycisk_opcje.setFont(new Font("Jokerman",Font.BOLD,50));
+        //pozwala na przeźroczyste przyciski
         przycisk_opcje.setBorderPainted(false);
         przycisk_opcje.setForeground(Color.white);
         przycisk_opcje.setBackground(Color.black);
         przycisk_opcje.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //na podstawie research'u - 1 z 3 metod zmieniania wielkości honorowana przez BoxLayout
         przycisk_opcje.setMaximumSize(new Dimension(1000,333));
 
         //Dodawanie komponentów

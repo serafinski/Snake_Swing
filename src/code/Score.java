@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Score extends JFrame {
-
+    //Panele
     JPanel panel_tekst;
 
     JPanel panel_wyniki;
@@ -13,7 +13,7 @@ public class Score extends JFrame {
 
     Score() throws Exception {
         this.setLayout(new BorderLayout());
-        this.setSize(750, 750);
+        this.setSize(Snake.SZEROKOSC_OKNA, Snake.WYSOKOSC_OKNA);
         this.setTitle("Wyniki!");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -23,31 +23,29 @@ public class Score extends JFrame {
 
 
         wyniki();
-
-        //this.pack();
         this.setLocationRelativeTo(null);
         setVisible(true);
     }
 
     public void wyniki() throws Exception {
-        //Panel
+        //Panele
         panel_tekst = new JPanel();
         panel_wyniki = new JPanel();
         panel_przycisk_powrotu = new JPanel();
 
-        //Layout
+        //Layouty Paneli
         panel_tekst.setLayout(new FlowLayout());
         panel_wyniki.setLayout(new FlowLayout());
         panel_przycisk_powrotu.setLayout(new FlowLayout());
 
 
-        //Kolor
+        //Kolory Paneli
         panel_tekst.setBackground(Color.BLACK);
         panel_wyniki.setBackground(Color.BLACK);
         panel_przycisk_powrotu.setBackground(Color.BLACK);
 
 
-        //Tekst
+        //Główny Tytuł
         JLabel tekst = new JLabel();
         tekst.setText("Ostatnie wyniki:");
         tekst.setForeground(Color.WHITE);
@@ -58,17 +56,22 @@ public class Score extends JFrame {
         //TextArea
         JTextArea textArea = new JTextArea(10,50);
 
+        //Użycie funkcji z klasy Reader do zamiany tekstu z pliku na String
         String data = Reader.plikJakoTekst("topscore.txt");
+        //ustawienie tekstu uzyskanego z funkcji jako tekst w JTextArea
         textArea.setText(data);
 
         textArea.setBackground(Color.BLACK);
         textArea.setForeground(Color.WHITE);
         textArea.setFont(new Font("Jokerman",Font.PLAIN,20));
+        //uniemożliwienie edycji danych w TextArea
         textArea.setEditable(false);
+
+        //zagnieżdżenie JTextArea w JScrollPane
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setPreferredSize(new Dimension(700,350));
 
-        //Najlepszy wynik
+        //Tytuł — Najlepszy wynik
         JLabel bestScoreTitle = new JLabel();
         bestScoreTitle.setText("Najlepszy wynik:");
         bestScoreTitle.setForeground(Color.WHITE);
@@ -76,8 +79,11 @@ public class Score extends JFrame {
         bestScoreTitle.setVerticalAlignment(JLabel.TOP);
         bestScoreTitle.setFont(new Font("Jokerman",Font.BOLD,50));
 
+        //Faktyczny najlepszy wynik
         JLabel bestScore = new JLabel();
+        //aktywacja funkcji w celu zaczytania danych
         TopScore.top();
+        //wyświetlanie wyniku
         bestScore.setText(TopScore.topName + ": " + String.valueOf(TopScore.topVaule));
         bestScore.setForeground(Color.WHITE);
         bestScore.setHorizontalAlignment(JLabel.CENTER);

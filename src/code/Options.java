@@ -60,6 +60,8 @@ public class Options extends JFrame {
     ActionListener zmienKolorTulowiaCzerwony = new CzerwonyT();
     ActionListener zmienKolorTulowiaZielony = new ZielonyT();
     ActionListener zmienKolorTulowiaNiebieski = new NiebieskiT();
+
+    //Panele
     JPanel panel_tytul;
 
     JPanel panel_opcje;
@@ -68,7 +70,7 @@ public class Options extends JFrame {
 
     Options(){
         this.setLayout(new BorderLayout());
-        this.setSize(750, 750);
+        this.setSize(Snake.SZEROKOSC_OKNA, Snake.WYSOKOSC_OKNA);
         this.setTitle("Opcje!");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -82,22 +84,22 @@ public class Options extends JFrame {
         setVisible(true);
     }
     public void wybor(){
-        //Panel
+        //Panele
         panel_tytul = new JPanel();
         panel_opcje = new JPanel();
         panel_przycisk_powrotu = new JPanel();
 
-        //Layout
+        //Layouty Paneli
         panel_tytul.setLayout(new FlowLayout());
         panel_opcje.setLayout(new BoxLayout(panel_opcje,BoxLayout.Y_AXIS));
         panel_przycisk_powrotu.setLayout(new FlowLayout());
 
-        //Kolor
+        //Kolor Paneli
         panel_tytul.setBackground(Color.BLACK);
         panel_opcje.setBackground(Color.BLACK);
         panel_przycisk_powrotu.setBackground(Color.BLACK);
 
-        //Tytul
+        //Główny tytuł
         JLabel tytul = new JLabel();
         tytul.setText("Opcje:");
         tytul.setForeground(Color.WHITE);
@@ -185,6 +187,7 @@ public class Options extends JFrame {
         przycisk_powrotu.setForeground(Color.WHITE);
         przycisk_powrotu.setBackground(Color.BLACK);
         przycisk_powrotu.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //na podstawie research'u - 1 z 3 metod zmieniania wielkości honorowana przez BoxLayout
         przycisk_powrotu.setMaximumSize(new Dimension(1000,200));
 
         //Dodawanie komponentów
@@ -210,7 +213,7 @@ public class Options extends JFrame {
         this.add(panel_przycisk_powrotu,BorderLayout.SOUTH);
     }
 
-    //SIATKI
+    //SIATKI LISTENERY
     private class Niebieska implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -266,7 +269,7 @@ public class Options extends JFrame {
         }
     }
 
-    //JABŁKA
+    //JABŁKA LISTENERY
     private class Zielone implements ActionListener{
 
         @Override
@@ -290,7 +293,7 @@ public class Options extends JFrame {
         }
     }
 
-    //GLOWA
+    //GLOWA LISTENERY
     private class CzerwonaG implements ActionListener{
 
         @Override
@@ -325,7 +328,7 @@ public class Options extends JFrame {
         }
     }
 
-    //CIALO
+    //CIALO LISTENERY
     private class CzerwonyT implements ActionListener{
 
         @Override
