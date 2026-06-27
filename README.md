@@ -1,7 +1,5 @@
 <div id="top"></div>
 
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/serafinski/Snake_Swing">
@@ -15,26 +13,6 @@
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Spis treści</summary>
-  <ol>
-    <li>
-      <a href="#o-projekcie">O projekcie</a>
-      <ul>
-        <li><a href="#zbudowane-przy-pomocy">Zbudowane przy pomocy</a></li>
-      </ul>
-    </li>
-    <li><a href="#licencja">Licencja</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
 ## O projekcie
 
 <p align="center">
@@ -46,32 +24,6 @@
 - Gracz przegrywa jeżeli wąż zderzy się sam ze sobą bądź z oknem.
 - Gracz posiada możliwość wyboru koloru siatki, koloru głowy węża, koloru ciała węża oraz koloru jabłka.
 
-
-<p align="right">(<a href="#top">powrót do początku</a>)</p>
-
-
-
 ### Zbudowane przy pomocy
 
 * [Swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html)
-
-<p align="right">(<a href="#top">powrót do początku</a>)</p>
-
-
-<!-- LICENSE -->
-## Licencja
-
-Dystrybucja na podstawie licencji MIT. Sprawdź `LICENSE` po więcej informacji.
-
-<p align="right">(<a href="#top">powrót do początku</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Kontakt
-
-Tomasz Serafiński - work.serafinski@gmail.com
-
-Link do projektu: [https://github.com/serafinski/Snake_Swing](https://github.com/serafinski/Snake_Swing)
-
-<p align="right">(<a href="#top">powrót do początku</a>)</p>
